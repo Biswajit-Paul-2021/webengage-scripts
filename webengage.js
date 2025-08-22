@@ -8,7 +8,7 @@ function selectRating(rating) {
   const ratingText = document.getElementById("select-rating");
   ratingText.innerText = `${rating} - ${getRatingText(rating)}`;
   ratingText.style.color =
-    rating <= 6 ? "#ff3b30" : rating <= 8 ? "#ff9500" : "#34c759";
+    rating <= 4 ? "#ff3b30" : rating <= 8 ? "#ff9500" : "#34c759";
   const submitButton = document.getElementById("submit-btn");
   submitButton.classList.add("active");
   submitButton.removeAttribute("disabled");
