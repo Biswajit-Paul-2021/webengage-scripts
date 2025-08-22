@@ -8,7 +8,7 @@ function selectRating(rating) {
   const ratingText = document.getElementById("select-rating");
   ratingText.innerText = `${rating} - ${getRatingText(rating)}`;
   ratingText.style.color =
-    rating <= 4 ? "#ff3b30" : rating <= 8 ? "#ff9500" : "#34c759";
+    rating <= 6 ? "#ff3b30" : rating <= 8 ? "#ff9500" : "#34c759";
   const submitButton = document.getElementById("submit-btn");
   submitButton.classList.add("active");
   submitButton.removeAttribute("disabled");
@@ -27,6 +27,41 @@ function next() {
   ).style.display = "block");
   document.getElementById("nps-container").style.display = "none";
   document.getElementById("thank-you").style.display = "none";
+}
+
+function submitRating() {
+  if (selectedRating === 0) return;
+
+  const feedback = document.getElementById("response").value;
+  const responseFilled = feedback.length > 0 ? "Yes" : "No";
+
+  // Capture the event data
+  const eventData = {
+    event: "In-app Template - Submit NPS Rating Clicked",
+    rating: selectedRating,
+    responseFilled: responseFilled,
+    response: feedback,
+  };
+
+  console.log(eventData);
+
+  // Example: Sending data to backend or analytics service
+  try {
+    weNotification.trackEvent(
+      "In-app Template - Submit NPS Rating Clicked",
+      JSON.stringify({
+        Rating: selectedRating,
+        "Response filled": responseFilled,
+        Response: feedback,
+        "Campaign ID": "~27kndo7",
+      })
+    );
+  } catch (err) {
+    console.log("Error at selected rating", err);
+  }
+
+  document.getElementById("start").style.display = "none";
+  document.getElementById("thank-you").style.display = "block";
 }
 
 function closeStart() {
