@@ -211,6 +211,10 @@ textarea {
   background-color: #f89e1b;
 }
 
+div.c1{
+  width: 80px;
+}
+
 div.c1>button>a {
   text-decoration: none;
   color: #000;
@@ -293,7 +297,7 @@ p.ques1 {
   padding: 0 20px;
   border-radius: 8px;
   /* width: 300px; */
-  width: 100%;
+  width: 80%;
   height: 100vh;
   position: relative;
   margin: 0 auto;
@@ -320,6 +324,7 @@ h3 {
 label {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   white-space: nowrap;
   font-weight: bold;
   padding: 10px;
