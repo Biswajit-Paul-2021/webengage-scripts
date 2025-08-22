@@ -29,41 +29,6 @@ function next() {
   document.getElementById("thank-you").style.display = "none";
 }
 
-function submitRating() {
-  if (selectedRating === 0) return;
-
-  const feedback = document.getElementById("response").value;
-  const responseFilled = feedback.length > 0 ? "Yes" : "No";
-
-  // Capture the event data
-  const eventData = {
-    event: "In-app Template - Submit NPS Rating Clicked",
-    rating: selectedRating,
-    responseFilled: responseFilled,
-    response: feedback,
-  };
-
-  console.log(eventData);
-
-  // Example: Sending data to backend or analytics service
-  try {
-    weNotification.trackEvent(
-      "In-app Template - Submit NPS Rating Clicked",
-      JSON.stringify({
-        Rating: selectedRating,
-        "Response filled": responseFilled,
-        Response: feedback,
-        "Campaign ID": "~27kndo7",
-      })
-    );
-  } catch (err) {
-    console.log("Error at selected rating", err);
-  }
-
-  document.getElementById("start").style.display = "none";
-  document.getElementById("thank-you").style.display = "block";
-}
-
 function closeStart() {
   document.getElementById("start").style.display = "none";
 }
